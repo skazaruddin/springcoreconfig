@@ -1,50 +1,28 @@
 
- <ehcache
-    	xsi:noNamespaceSchemaLocation="ehcache.xsd"
-    	updateCheck="true"
-    	monitoring="autodetect"
-    	dynamicConfig="true"
-    	maxBytesLocalHeap="150M"
-    	>
-    	<diskStore path="java.io.tmpdir"/>
+<!-- <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.ehcache.org/ehcache.xsd" -->
+<!--          updateCheck="true" monitoring="autodetect" dynamicConfig="true"> -->
 
-    	<cache name="cache1-name"
-    	      maxBytesLocalHeap="100M"
-    	      eternal="false"
-    	      timeToIdleSeconds="300"
-    	      overflowToDisk="true"
-    	      maxElementsOnDisk="1000"
-    	      memoryStoreEvictionPolicy="LRU"/>
+<!--     <cache name="users" -->
+<!--            maxElementsInMemory="100000" eternal="false" -->
+<!--            overflowToDisk="true" -->
+<!--            timeToLiveSeconds="300" timeToIdleSeconds="0" -->
+<!--            memoryStoreEvictionPolicy="LFU" transactionalMode="off"> -->
+<!--     </cache> -->
+<!-- </ehcache> -->
 
-    	<cache name="cache2-name"
-    	      maxBytesLocalHeap="40M"
-    	      eternal="false"
-    	      timeToIdleSeconds="300"
-    	      overflowToDisk="true"
-    	      maxEntriesLocalDisk="1000"
-    	      diskPersistent="false"
-    	      diskExpiryThreadIntervalSeconds="120"
-    	      memoryStoreEvictionPolicy="LRU"/>
 
-    	<cache name="cache3-name"
-    	      maxBytesLocalHeap="5M"
-    	      eternal="true"
-    	      memoryStoreEvictionPolicy="LRU">
-    	      <pinning store="localMemory"/>
-    	 </cache>
-
-    	<cache name="cache4-name"
-                  maxBytesLocalHeap="3M"
-    	      eternal="true"
-    	      memoryStoreEvictionPolicy="LRU">
-    	      <pinning store="localMemory"/>
-    	</cache>
-
-    	<cache name="cache5-name"
-                  maxBytesLocalHeap="1M"
-    	      timeToLiveSeconds="300"
-    	      memoryStoreEvictionPolicy="LRU">
-    	 </cache>
-
-    </ehcache>
-  
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="ehcache.xsd"
+     updateCheck="true" monitoring="autodetect" dynamicConfig="true">
+    <cache name="users" 
+      maxEntriesLocalHeap="5000"
+      maxEntriesLocalDisk="1000" 
+      eternal="false" 
+      diskSpoolBufferSizeMB="20" 
+      timeToIdleSeconds="200" 
+      timeToLiveSeconds="500" 
+      memoryStoreEvictionPolicy="LFU" 
+      transactionalMode="off">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+  </ehcache> 

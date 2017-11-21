@@ -9,9 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 @Entity
 //@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "area")
 public class Area {
