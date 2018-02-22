@@ -1,5 +1,6 @@
 package org.sdrc.domain;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.Column;
@@ -13,7 +14,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user_tbl")
-public class User {
+public class User implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6142358483948073924L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

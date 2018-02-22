@@ -1,5 +1,6 @@
 package org.sdrc.domain;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -16,8 +17,13 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-public class FeaturePermissionMapping {
+public class FeaturePermissionMapping implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2071160936110885287L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="feature_permission_mapping_id")

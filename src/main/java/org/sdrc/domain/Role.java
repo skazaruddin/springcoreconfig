@@ -1,5 +1,6 @@
 package org.sdrc.domain;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -14,7 +15,12 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Role {
+public class Role implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 262708472299623890L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

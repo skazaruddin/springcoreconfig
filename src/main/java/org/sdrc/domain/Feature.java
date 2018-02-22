@@ -1,5 +1,6 @@
 package org.sdrc.domain;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -13,7 +14,12 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-public class Feature {
+public class Feature implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9034475794545960933L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

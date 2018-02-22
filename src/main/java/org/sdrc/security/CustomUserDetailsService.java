@@ -52,7 +52,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		User user = userService.findByUsername(userName);
 
 		if (user == null) {
-			return null;
+			throw new UsernameNotFoundException("Invalid username or password !");
 		}
 
 		Collection<UserAreaMapping> areaMappings = user.getAreas();
@@ -62,13 +62,22 @@ public class CustomUserDetailsService implements UserDetailsService {
 			List<UserRoleFeaturePermissionMapping> featureAndPermissions = userAreaMapping.getUserRoleFeaturePermissionMappings();
 			for (UserRoleFeaturePermissionMapping userRoleFeaturePermissionMapping : featureAndPermissions) {
 				RoleFeaturePermissionScheme roleFeaturePermissionScheme = userRoleFeaturePermissionMapping.getRoleFeaturePermissionScheme();
+				
+				//adding authorities using syntax : (Role:Feature,Permission)
 				grantedAuthorities.add(new SimpleGrantedAuthority(
 						roleFeaturePermissionScheme.getRole().getRoleName().concat(":").
 						concat(roleFeaturePermissionScheme.getFeaturePermissionMapping().getFeature().getFeatureName())
 						.concat(",")
 						.concat
 						(roleFeaturePermissionScheme.getFeaturePermissionMapping().getPermission().getPermissionName())));
-				
+			
+				//adding authorities using syntax : (Feature,Permission)
+				grantedAuthorities.add(new SimpleGrantedAuthority(
+						roleFeaturePermissionScheme.getFeaturePermissionMapping().getFeature().getFeatureName()
+						.concat(",")
+						.concat
+						(roleFeaturePermissionScheme.getFeaturePermissionMapping().getPermission().getPermissionName())));
+			
 				logger.info("\n<Granted Authorities To User> , {} \n",roleFeaturePermissionScheme.getRole().getRoleName().concat(":").
 							concat(roleFeaturePermissionScheme.getFeaturePermissionMapping().getFeature().getFeatureName())
 							.concat(",")

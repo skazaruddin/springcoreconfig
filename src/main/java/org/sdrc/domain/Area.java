@@ -1,5 +1,6 @@
 package org.sdrc.domain;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -11,7 +12,12 @@ import javax.persistence.OneToMany;
 
 @Entity
 //@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "area")
-public class Area {
+public class Area implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1558538811474305739L;
 
 	@Id
 	@Column(name = "area_id")
