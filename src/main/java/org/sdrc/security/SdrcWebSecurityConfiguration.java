@@ -50,6 +50,7 @@ public class SdrcWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		public void configure(WebSecurity web) throws Exception {
 			web.ignoring().antMatchers("/*.css");
 			web.ignoring().antMatchers("/*.js");
+			web.ignoring().antMatchers("/*.html");
 		}
 
 	 
